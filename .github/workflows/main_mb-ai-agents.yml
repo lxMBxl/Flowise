@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'production'
+      name: 'mb-ai-agents'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -46,6 +46,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'mb-ai-agents'
-        slot-name: 'production'
+        slot-name: 'mb-ai-agents'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_0b519cd1783c464ebb34aea5a5dd35d4 }}
         images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f9a56cdd49e74059b3b2498d80ad6539 }}/flowiseai/flowise:${{ github.sha }}'
